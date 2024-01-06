@@ -1,0 +1,117 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+"Das Wurzel-Query-Objekt für GraphQL-Anfragen."
+type Query {
+  "Liefert Daten einer spezifischen Fakultät anhand ihrer eindeutigen ID."
+  fakultaet(id: ID!): Fakultaet
+
+  """
+  Liefert eine Liste von Fakultäten basierend auf den angegebenen Suchkriterien.
+  Wenn keine Suchkriterien angegeben ist, wird alles geliefert.
+  """
+  fakultaeten(input: Suchkriterien): [Fakultaet!]
+}
+
+type Mutation {
+  "Einen neuen Fakultaetdatensatz anlegen"
+  create(input: FakultaetInput!): CreatePayload
+}
+
+"Repräsentiert eine Fakultät mit ihren spezifischen Attributen und Beziehungen."
+type Fakultaet {
+  "Eindeutige Identifikationsnummer der Fakultät."
+  id: ID
+
+  "Name der Fakultät."
+  name: String!
+
+  "Liste der Professoren, die der Fakultät zugeordnet sind."
+  professoren: [Professor!]
+
+  "Zugeordneter Dekan der Fakultät."
+  dekan: Dekan
+}
+
+"Definiert einen Professor mit persönlichen Informationen und zugehörigem Büro."
+type Professor {
+  "Eindeutige Identifikationsnummer des Professors."
+  id: String!
+
+  "Name des Professors."
+  name: String!
+
+  "Büro des Professors."
+  buero: Buero
+}
+
+"Stellt einen Dekan mit seiner ID und seinem Namen dar."
+type Dekan {
+  "Eindeutige Identifikationsnummer des Dekans."
+  id: String!
+
+  "Name des Dekans."
+  name: String!
+}
+
+"Beschreibt ein Büro mit seiner eindeutigen ID und Gebäudebezeichnung."
+type Buero {
+  "Eindeutige Identifikationsnummer des Büros."
+  id: String!
+
+  "Bezeichnung des Gebäudes, in dem sich das Büro befindet."
+  gebaeude: String!
+}
+
+"Definiert die Eingabekriterien zur Suche nach Fakultäten."
+input Suchkriterien {
+  "Name der Fakultät als Suchkriterium."
+  name: String
+
+  "Name des Professors als Suchkriterium."
+  professor: String
+
+  "Name des Dekans als Suchkriterium."
+  dekan: String
+}
+
+"Eingabedaten für eine neue Fakultät."
+input FakultaetInput {
+  "Name der neuen Fakultät."
+  name: String!
+
+  "Liste der Professoren, die der neuen Fakultät zugeordnet werden sollen."
+  professoren: [ProfessorInput]
+
+  "Dekan, der der neuen Fakultät zugeordnet werden soll."
+  dekan: DekanInput
+}
+
+"Eingabedaten für einen neuen Professor."
+input ProfessorInput {
+  "Name des Professors."
+  name: String!
+
+  "Büro des Professors."
+  buero: BueroInput
+}
+
+"Eingabedaten für ein neues Büro."
+input BueroInput {
+  "Bezeichnung des Gebäudes für das neue Büro."
+  gebaeude: String!
+}
+
+"Eingabedaten für einen neuen Dekan."
+input DekanInput {
+  "Name des Dekans."
+  name: String!
+}
+
+"Payload-Typ für die Rückgabe nach dem Erstellen eines neuen Datensatzes."
+type CreatePayload {
+  "Eindeutige ID des erstellten Datensatzes."
+  id: String!
+}
