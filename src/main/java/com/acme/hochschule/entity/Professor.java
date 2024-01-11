@@ -2,6 +2,8 @@ package com.acme.hochschule.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -50,6 +52,8 @@ public class Professor {
     /**
      * Das Büro des Professors.
      */
+    @ManyToOne
+    @JoinColumn(name = "buero_id")
     @NotNull
     @Valid
     private Buero buero;
