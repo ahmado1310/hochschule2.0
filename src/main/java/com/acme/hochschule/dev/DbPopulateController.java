@@ -25,7 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import static com.acme.kunde.dev.DevConfig.DEV;
+import static com.acme.hochschule.dev.DevConfig.DEV;
 import static org.springframework.http.MediaType.TEXT_PLAIN_VALUE;
 import static org.springframework.http.ResponseEntity.ok;
 
