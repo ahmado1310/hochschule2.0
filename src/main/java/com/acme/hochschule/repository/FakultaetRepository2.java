@@ -26,7 +26,7 @@ import static java.util.UUID.randomUUID;
  */
 @Repository
 @Slf4j
-public class FakultaetRepository {
+public class FakultaetRepository2 {
     /**
      * Eine Fakultät anhand ihrer ID suchen.
      *

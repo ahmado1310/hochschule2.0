@@ -1,7 +1,7 @@
 package com.acme.hochschule.service;
 
 import com.acme.hochschule.entity.Fakultaet;
-import com.acme.hochschule.repository.FakultaetRepository;
+import com.acme.hochschule.repository.FakultaetRepository2;
 import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Slf4j
 public class FakultaetWriteService {
-    private final FakultaetRepository fakultaetRepository;
+    private final FakultaetRepository2 fakultaetRepository;
     private final Validator validator;
 
     /**
